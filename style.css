@@ -1,0 +1,272 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1d1b1b;
+    margin-top: 70px;
+}
+
+
+table{
+        border-collapse: collapse;
+        width: 50%;
+    }   
+th, td{
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+        color : whitesmoke;
+    }
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1:hover {
+    color: red;
+    animation: defile 2s infinite;
+}
+
+@keyframes defile {
+    0% {
+        text-shadow: 0 0 5px red;
+    }
+    50% {
+        text-shadow: 0 0 20px red;
+    }
+    100% {
+        text-shadow: 0 0 5px red;
+    }
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    flex: 4;
+    text-align: center;
+    padding: 10px;
+}
+
+iframe {
+    display: block;
+    margin: 20px auto;
+    border: 2px solid;
+}
+
+iframe:hover {
+    border: 2px solid rgb(0, 242, 255);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 5px rgb(0, 242, 255);
+    }
+    50% {
+        box-shadow: 0 0 20px rgb(0, 242, 255);
+    }
+    100% {
+        box-shadow: 0 0 5px rgb(0, 242, 255);
+    }
+}
+
+p {
+    color: white;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* --- DÉBUT DES MODIFICATIONS POUR LE FORMULAIRE --- */
+
+form {
+    /* Positionnement et dimension */
+    width: 300px;
+    margin: 20px auto;
+    padding: 30px; 
+    
+    /* Nécessaire pour l'effet */
+    position: relative;
+    background-color: #1d1b1b; 
+    border-radius: 10px;
+    overflow: hidden; 
+    z-index: 1; 
+}
+
+/* L'animation de rotation (le dégradé qui tourne derrière) */
+form::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    
+    /* L'effet arc-en-ciel est maintenant dans le background */
+    background: repeating-conic-gradient(
+        from 0deg, 
+        #ff0000 0%, #ff8000 10%, #ffff00 20%, 
+        #00ff00 30%, #00ffff 40%, #0000ff 50%, 
+        #8000ff 60%, #ff00ff 70%, #ff0000 80% /* Répétition pour la transition */
+    );
+    
+    /* Animation de rotation et de changement de couleur */
+    animation: tourverre 4s linear infinite, couleur-arc-en-ciel 10s linear infinite;
+    
+    /* Ajout d'un flou pour l'effet "brillant / néon" */
+    filter: blur(8px);
+    z-index: -2;
+}
+
+/* Le cache noir au centre pour créer l'effet de bordure fine */
+form::after {
+    content: '';
+    position: absolute;
+    inset: 4px; 
+    background: #1d1b1b; 
+    border-radius: 8px;
+    z-index: -1;
+}
+
+/* Animation de rotation */
+@keyframes tourverre {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Nouvelle animation pour faire défiler les couleurs sur le gradient */
+@keyframes couleur-arc-en-ciel {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+
+/* --- FIN DES MODIFICATIONS FORMULAIRE --- */
+
+label {
+    color: white;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f0f0f0; 
+}
+
+input[type="text"], input[type="password"], input[type="email"], textarea:focus {
+    border-color: #2d5c9c;
+    outline: none;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #6bee71;
+}
+
+img {
+    display: block;
+    margin: 30px auto;
+}
+
+img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #3a4394;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.1);
+    transition: 0.4s;
+}
+
+/* --- MEDIA QUERIES --- */
+
+@media screen and (max-width: 1024px) {
+    nav a {
+        padding: 8px 5px;
+        font-size: 0.9em;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        padding: 15px 0;
+        position: relative;
+        height: auto;
+    }
+    nav a {
+        flex: none;
+        width: 100%;
+        text-align: left;
+        padding: 10px 20px;
+        border-top: 1px solid #444;
+    }
+    body {
+        margin-top: 0;
+    }
+    form {
+        width: 85%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+
+    
+}

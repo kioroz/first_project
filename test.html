@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+    /* Reset simple pour la démo */
+    body {
+        background-color: #121212; /* Fond sombre pour faire ressortir les couleurs */
+        color: white;
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    /* --- LE CONTENEUR DE L'EFFET --- */
+    .form-box {
+        position: relative;
+        width: 300px;
+        padding: 4px; /* Définit l'épaisseur de la bordure lumineuse */
+        background: #1c1c1c; /* Couleur de secours */
+        border-radius: 10px;
+        overflow: hidden; /* Important pour masquer ce qui dépasse */
+        z-index: 1; /* Pour gérer l'empilement */
+    }
+
+    /* L'animation de rotation (la "ligne" qui tourne) */
+    .form-box::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        /* Le dégradé qui crée l'effet de ligne */
+        background: conic-gradient(
+            transparent, 
+            transparent, 
+            transparent, 
+            #00ccff, /* Couleur 1 */
+            #d400d4  /* Couleur 2 */
+        );
+        animation: tourverre 4s linear infinite;
+        z-index: -2; /* Derrière tout le reste */
+    }
+
+    /* Le fond noir par-dessus le gradient pour créer le "trou" au milieu */
+    .form-box::after {
+        content: '';
+        position: absolute;
+        inset: 4px; /* Doit correspondre au padding du parent pour l'épaisseur */
+        background: #222; /* La couleur de fond réelle du formulaire */
+        border-radius: 8px;
+        z-index: -1; /* Devant l'animation mais derrière le contenu */
+    }
+
+    /* --- STYLE DU FORMULAIRE (CONTENU) --- */
+    .form-content {
+        position: relative;
+        padding: 40px 20px;
+        z-index: 2;
+    }
+
+    .form-content h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 10px;
+        background: #333;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        box-sizing: border-box; /* Important pour le padding */
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+        background: #00ccff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    
+    .btn:hover {
+        background: #d400d4;
+        color: white;
+    }
+
+    /* Définition de l'animation */
+    @keyframes tourverre {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+</head>
+<body>
+
+    <div class="form-box">
+        <form class="form-content">
+            <h2>Connexion</h2>
+            <div class="input-group">
+                <input type="text" placeholder="Nom d'utilisateur">
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Mot de passe">
+            </div>
+            <button class="btn">Entrer</button>
+        </form>
+    </div>
+
+</body>
+</html>

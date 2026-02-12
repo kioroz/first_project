@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Acceuil</a>
+        <a href="inscription.html">Inscription</a>
+        <a href="connexion.html">Connexion</a>
+        <a href="formcontact.html">Contact</a>
+    
+    </nav>
+    <h1>formulaire de contact</h1>
+    <form action="contact.php" method="POST">
+        <label for="prénom">prénom</label>
+        <input type="text" id="prénom" name="prénom" ><br>
+        <label for="nom">Nom:</label><br>
+        <input type="text" id="name" name="name" ><br>
+        <label for="mail">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="sub">sujet</label>
+        <input type="text" id="sujet" name="sujet">
+        <label for="mess">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="38.5" required></textarea><br>
+        <input type="submit" value="Envoyer">
+    </form>
+</body>
+
+</html>
